@@ -25,12 +25,30 @@ namespace boxify.Data
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<UserFavorite>()
+                .HasKey(uf => new { uf.UserId, uf.FavoriteId });
+
+            modelBuilder.Entity<UserFavorite>()
+                 .HasOne(f => f.Favourite)
+                .WithMany(uf => uf.UserFavorites)
+                .HasForeignKey(f => f.FavoriteId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<AdTag>()
+                .HasKey(at => new { at.AdId, at.TagId });
+
+            
+
         }
 
 
         public DbSet<Ad> Ads { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Coment> Coments { get; set; }
-        public DbSet<Like> Likes { get; set; }
+        public DbSet<Favourite> Favourites { get; set; }
+        public DbSet<UserFavorite> UserFavorite { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<AdTag> AdTags { get; set; }
+
     }
 }

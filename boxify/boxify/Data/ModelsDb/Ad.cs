@@ -59,7 +59,7 @@ namespace boxify.Data.ModelsDb
         [ForeignKey(nameof(UserId))]
         public IdentityUser User { get; set; }
 
-
+        public ICollection<AdTag> AdTags { get; set; } = new HashSet<AdTag>();
 
     }
 
