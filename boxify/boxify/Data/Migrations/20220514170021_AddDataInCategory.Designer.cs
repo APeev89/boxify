@@ -12,8 +12,8 @@ using boxify.Data;
 namespace boxify.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220430134801_AddedTagsAndRepairFavourite")]
-    partial class AddedTagsAndRepairFavourite
+    [Migration("20220514170021_AddDataInCategory")]
+    partial class AddDataInCategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,6 +116,38 @@ namespace boxify.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Description = "All kinds of electronics - phones, laptops, PCs, TVs ...",
+                            Name = "Electronics"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Description = "All types of cars",
+                            Name = "Cars"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            Description = "Аll kinds and breeds of animals",
+                            Name = "Animals"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            Description = "Clothes, shoes, accessories...",
+                            Name = "Fashions"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            Description = "Cleaning, catering, beautician...",
+                            Name = "Services"
+                        });
                 });
 
             modelBuilder.Entity("boxify.Data.ModelsDb.Coment", b =>

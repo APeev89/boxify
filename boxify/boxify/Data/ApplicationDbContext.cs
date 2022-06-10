@@ -15,6 +15,13 @@ namespace boxify.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Category>().HasData(new Category { Id = "1", Name = "Electronics", Description = "All kinds of electronics - phones, laptops, PCs, TVs ..." });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = "2", Name = "Cars", Description = "All types of cars" });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = "3", Name = "Animals", Description = "Аll kinds and breeds of animals" });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = "4", Name = "Fashions", Description = "Clothes, shoes, accessories..." });
+            modelBuilder.Entity<Category>().HasData(new Category { Id = "5", Name = "Services", Description = "Cleaning, catering, beautician..." });
+
+
             modelBuilder.Entity<Coment>()
                 .HasOne(a => a.Ad)
                 .WithMany()

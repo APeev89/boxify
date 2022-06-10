@@ -43,9 +43,6 @@ namespace boxify.Data.ModelsDb
         public bool IsActive { get; set; }
 
         [Required]
-        public AdStatus Status { get; set; }
-
-        [Required]
         public string CategoryId { get; set; }
 
         [ForeignKey(nameof(CategoryId))]
@@ -63,10 +60,5 @@ namespace boxify.Data.ModelsDb
 
     }
 
-    public enum AdStatus
-    {
-        InStock = 1,
-        Sold = 2,
-        Reserved = 3
-    }
+ 
 }

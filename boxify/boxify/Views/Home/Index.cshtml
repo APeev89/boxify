@@ -1,6 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using boxify.ViewModels
+@model HomeViewModel
+
+
 <div class="loop-wrapper">
     <div class="mountain"></div>
     <div class="hill"></div>
@@ -12,6 +13,11 @@
     <div class="wheels"></div>
 </div>
 <div class="text-center">
-    <h1 class="display-4">Welcome </h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Boxify</h1>
+    <p></a>.</p>
+
+    @*@foreach(var ad in Model.NewAds)
+    {
+        <partial name="_AdCard" model="ad"/>
+    }*@
 </div>

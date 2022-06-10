@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using boxify.Data;
 using boxify.ModelBinders;
 using boxify.Constants;
+using boxify.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => 
 {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 6;
@@ -22,6 +23,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.Password.RequiredUniqueChars = 0;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddScoped<IRepository, Repository>();
+
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {

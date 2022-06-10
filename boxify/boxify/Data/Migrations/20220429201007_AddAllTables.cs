@@ -36,7 +36,6 @@ namespace boxify.Data.Migrations
                     DateFrom = table.Column<DateTime>(type: "date", nullable: false),
                     DateTo = table.Column<DateTime>(type: "date", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },

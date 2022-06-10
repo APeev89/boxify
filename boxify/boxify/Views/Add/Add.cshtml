@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Create your new Ad";
+}
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+
+
+    <form method="post">
+        <h5>Category</h5>
+        <div class="form-group">
+            <select name="Category">
+                <option value="Electronics">Electronics</option>
+                <option value="cars">Cars</option>
+                <option value="animals">Animals</option>
+                <option value="fashions">Fashions</option>
+                <option value="services">Services</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" id="name" name="Name" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" name="Price" placeholder="0.00">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" name="PhoneNumber" placeholder="+359">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="City" placeholder="Location">
+        </div>
+        <div class="form-group">
+            <label for="imgUrl">Image</label>
+            <input type="text" class="form-control" id="imgUrl" name="ImgUrl" placeholder="https://...">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="Description" placeholder="...">
+        </div>
+        <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+    </form>
+</div>

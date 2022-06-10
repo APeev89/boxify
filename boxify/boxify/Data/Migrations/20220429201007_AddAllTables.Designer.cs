@@ -69,8 +69,7 @@ namespace boxify.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                
 
                     b.Property<string>("UserId")
                         .IsRequired()
