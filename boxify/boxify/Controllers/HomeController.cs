@@ -9,28 +9,21 @@ namespace boxify.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
-        //private readonly IRepository _repo;
+        private readonly ILogger<HomeController> logger;
+        private readonly IRepository repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> _logger, IRepository _repo)
         {
-            _logger = logger;
-           // _repo = repo;
+            logger = _logger;
+            repo = _repo;
         }
 
         public IActionResult Index()
         {
-            //var homeViewModel = new HomeViewModel
-            //{
-            //    NewAds = _repo.All<Ad>(),
-            //};
+
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

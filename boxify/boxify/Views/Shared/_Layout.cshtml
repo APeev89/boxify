@@ -24,10 +24,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List"><i class="fas fa-border-all"></i> Ads</a>*@
+                           
+                             @await Component.InvokeAsync("CategoryMenu")
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Add" asp-action="Add">Create</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Ad" asp-action="Add"><i class="fas fa-plus-circle"></i> Create</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

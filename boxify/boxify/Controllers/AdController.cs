@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace boxify.Controllers
 {
-    public class AddController: BaseController
+    public class AdController: BaseController
     {
         private readonly IRepository repo;
         private readonly UserManager<IdentityUser> userManager;
 
-        public AddController(IRepository _repo, UserManager<IdentityUser> _userManager)
+        public AdController(IRepository _repo, UserManager<IdentityUser> _userManager)
         {
             repo = _repo;
             userManager = _userManager;
@@ -52,6 +52,40 @@ namespace boxify.Controllers
             repo.SaveChanges();
 
             return Redirect("/");
+        }
+
+        public IActionResult Details(string id)
+        {
+            var ad = repo.GetById<Ad>(id);
+            if (ad == null)
+            {
+                return NotFound();
+            }
+            return View(ad);
+        }
+
+        public IActionResult List(string category)
+        {
+            IEnumerable<Ad> ads;
+            string currentCategory;
+
+            if (category == null)
+            {
+                ads = repo.All<Ad>().OrderBy(x => x.DateFrom);
+                currentCategory = "All ads";
+            }
+            else
+            {
+                ads = repo.All<Ad>().Where(x => x.Category.Name == category).OrderBy(x => x.DateFrom);
+                currentCategory = repo.All<Category>().FirstOrDefault(x => x.Name == category)?.Name;
+            }
+
+
+            return View(new AdsListViewModel
+            {
+                Ads = ads,
+                CurrentCategory = currentCategory
+            });
         }
     }
 }

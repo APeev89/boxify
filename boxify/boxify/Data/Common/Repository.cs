@@ -28,6 +28,11 @@ namespace boxify.Data.Common
         }
 
 
+        public T GetById<T>(object id) where T : class
+        {
+            return this.DbSet<T>().Find(id);
+        }
+
         public IQueryable<T> All<T>(Expression<Func<T, bool>> search) where T : class
         {
             return this.DbSet<T>().Where(search).AsQueryable();
@@ -42,5 +47,8 @@ namespace boxify.Data.Common
         {
             return dbContext.Set<T>();
         }
+
+      
     }
 }
+

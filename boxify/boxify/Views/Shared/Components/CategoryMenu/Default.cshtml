@@ -1,0 +1,22 @@
+﻿@using boxify.Data.ModelsDb
+@model IEnumerable<Category>
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ads
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a asp-controller="Ad" asp-action="List"
+               asp-route-category="@category.Name">@category.Name</a>
+            </li>
+        }
+        <li class="divider"></li>
+        <li>
+            <a asp-controller="Ad" asp-action="List" asp-route-Category="">View all ads</a>
+        </li>
+    </ul>
+</li>
