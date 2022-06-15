@@ -7,15 +7,23 @@
     <img alt="@Model.Name" src="@Model.ImgUrl">
     <div class="caption-full">
         <h3 class="pull-right">@Model.Price.ToString("c")</h3>
-        <ul>
-            <h5>Contact us:</h5>
-            <li>Phone: @Model.PhoneNumber</li>
-            <li>Email: @Model.Name</li>
+        <h5>Contact us:</h5>
+        <li>Phone: @Model.PhoneNumber</li>
+        <li>Email: @Model.Name</li>
         </ul>
         <ul>
             <li>Info: @Model.Description</li>
             <li>Valid until: @Model.DateTo.ToString("d")</li>
         </ul>
+        @if (@Model.isFavorite == false)
+        {
+            <div class="addToFavorites">
+                <p class="button">
+                    <a class="btn btn-primary" asp-controller="Favorites" asp-action="AddToFavorites"
+                   asp-route-id="@Model.Id">Add to favorites</a>
+                </p>
+            </div>
+        }
 
     </div>
 </div>

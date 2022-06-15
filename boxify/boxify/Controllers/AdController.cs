@@ -32,7 +32,7 @@ namespace boxify.Controllers
             //var user = userManager.Users.FirstOrDefault(x => x.UserName == userName);
                 // Second way to take a user
             var user = userManager.GetUserAsync(User).Result;
-            
+
 
             Ad ad = new Ad()
             {
@@ -45,6 +45,7 @@ namespace boxify.Controllers
                 CategoryId = category.Id,
                 UserId = user.Id,
                 Description = model.Description,
+                isFavorite = false,
                
             };
 
@@ -53,7 +54,6 @@ namespace boxify.Controllers
 
             return Redirect("/");
         }
-
         public IActionResult Details(string id)
         {
             var ad = repo.GetById<Ad>(id);
@@ -61,8 +61,26 @@ namespace boxify.Controllers
             {
                 return NotFound();
             }
+
+            var user = userManager.GetUserAsync(User).Result;
+            var favorite = repo.All<Favourite>().FirstOrDefault(x => x.AdId == ad.Id);
+
+            if (favorite != null)
+            {
+                var currentAd = repo.All<UserFavorite>().FirstOrDefault(x => (x.UserId == user.Id) && (x.FavoriteId == favorite.Id));
+
+                if (currentAd != null)
+                {
+                    ad.isFavorite = true;
+                }
+
+            }
+
+
             return View(ad);
         }
+
+       
 
         public IActionResult List(string category)
         {

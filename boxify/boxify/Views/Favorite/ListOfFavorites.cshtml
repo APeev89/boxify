@@ -1,0 +1,17 @@
+﻿@using boxify.ViewModels
+@model FavoritesViewModel
+
+<h2>Your favorite ads</h2>
+@if (Model.Favourite.Count() == 0)
+{
+    <h4>You don't have any favorites ads!</h4>
+}
+@foreach (var ad in Model.Favourite)
+{
+    <partial name="_AdCard" model="ad" />
+    <div class="addToFavorites">
+        <p class="button">
+            <a class="btn btn-primary" asp-controller="Favorites" asp-action="RemoveFromFavorites">Remove</a>
+        </p>
+    </div>
+}

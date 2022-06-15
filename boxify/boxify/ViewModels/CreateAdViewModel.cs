@@ -17,7 +17,6 @@ namespace boxify.ViewModels
 
         public string? Description { get; set; }
 
-       
 
     }
 }

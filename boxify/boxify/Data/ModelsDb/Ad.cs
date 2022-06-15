@@ -41,6 +41,7 @@ namespace boxify.Data.ModelsDb
         public DateTime DateTo { get; set; } = DateTime.Now.AddDays(30);
 
         public bool IsActive { get; set; }
+        public bool isFavorite { get; set; } = false;
 
         [Required]
         public string CategoryId { get; set; }
