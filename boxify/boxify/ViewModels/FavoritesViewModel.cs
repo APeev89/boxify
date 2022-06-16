@@ -4,7 +4,7 @@ namespace boxify.ViewModels
 {
     public class FavoritesViewModel
     {
-        public IEnumerable<Favourite>? Favourite { get; set; }
+        public IEnumerable<Favourite>? FavouriteList { get; set; }
 
     }
 }

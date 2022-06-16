@@ -18,7 +18,7 @@
         @if (@Model.isFavorite == false)
         {
             <div class="addToFavorites">
-                <p class="button">
+                <p class="button" >
                     <a class="btn btn-primary" asp-controller="Favorites" asp-action="AddToFavorites"
                    asp-route-id="@Model.Id">Add to favorites</a>
                 </p>
