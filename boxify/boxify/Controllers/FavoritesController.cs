@@ -72,5 +72,18 @@ namespace boxify.Controllers
             });
         }
 
+
+        public IActionResult RemoveFromFavorites(string id)
+        {
+            var ad = repo.GetById<Ad>(id);
+            var user = userManager.GetUserAsync(User).Result;
+            var favoriteAd = repo.All<Favourite>().FirstOrDefault(x => x.AdId == ad.Id && x.UserFavorites.Any(u => u.UserId == user.Id));
+            var userFavorite = repo.All<UserFavorite>().FirstOrDefault(x => x.UserId == user.Id && x.FavoriteId == favoriteAd.Id);
+            repo.Delete<UserFavorite>(userFavorite);
+            repo.Delete<Favourite>(favoriteAd);
+
+            repo.SaveChanges();
+            return Redirect("/Favorites/ListOfFavorites");
+        }
     }
 }
