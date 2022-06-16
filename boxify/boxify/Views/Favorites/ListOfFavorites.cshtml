@@ -2,7 +2,7 @@
 @model FavoritesViewModel
 
 <h2>Your favorite ads</h2>
-@if (Model.FavouriteList.Count() == 0)
+@if (Model.FavouriteList is null)
 {
     <h4>You don't have any favorites ads!</h4>
 }

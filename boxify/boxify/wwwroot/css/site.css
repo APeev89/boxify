@@ -1,21 +1,21 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     margin-bottom: 60px;
-  /*  background-image: url("/img/box.jpg") ;
+    /*  background-image: url("/img/box.jpg") ;
     
     height: 100%;
     background-position: center;
@@ -25,8 +25,9 @@ body {
 
 body {
     background: #009688;
-    overflow: hidden;
+    overflow: auto;
     font-family: 'Open Sans', sans-serif;
+    
 }
 
 .loop-wrapper {
@@ -238,3 +239,22 @@ body {
         transform: translateX(-2000px);
     }
 }
+
+.thumbnail img {
+    width: 55%;
+  
+}
+
+.thumbnail {
+    padding: 8px 8px 2px;
+    font-size: x-small;
+    border-top: 3px dotted #bbb;
+}
+
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+        width: 40%;
+        float: right;
+    }
+
