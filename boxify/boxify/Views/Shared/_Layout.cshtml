@@ -7,11 +7,33 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/boxify.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/fontawesome-free/css/all.min.css"/>
+    <link rel="stylesheet" href="~/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/Sidebar.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li>
+                    <form class="search-form" role="search">
+                        <div class="form-group md-form mt-0 pt-1 waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>
+                <hr class="hr3">
+                <a asp-controller="Ad" asp-action="List" asp-route-category="Electronics">Electronics</a>
+                <a asp-controller="Ad" asp-action="List" asp-route-category="Cars">Cars</a>
+                <a asp-controller="Ad" asp-action="List" asp-route-category="Animals">Animals</a>
+                <a asp-controller="Ad" asp-action="List" asp-route-category="Fashions">Fashions</a>
+                <a asp-controller="Ad" asp-action="List" asp-route-category="Services">Services</a>
+                <a asp-controller="Ad" asp-action="List" asp-route-category="">View all ads</a>
+
+            </div>
+            <div id="main">
+                <button class="openbtn" onclick="openNav()">&#9776;</button>
+            </div>
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-box-open"></i>Boxify</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,16 +47,18 @@
                         </li>
                         <li class="nav-item">
                             @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List"><i class="fas fa-border-all"></i> Ads</a>*@
-                           
-                             @await Component.InvokeAsync("CategoryMenu")
+
+                            @* @await Component.InvokeAsync("CategoryMenu")*@
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Ad" asp-action="Add"><i class="fas fa-plus-circle"></i> Create</a>
-                        </li><li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="ListOfFavorites"><i class="far fa-star"></i> Favorites</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
+
                 </div>
             </div>
         </nav>
@@ -53,6 +77,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Sidebar.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
