@@ -66,8 +66,6 @@ namespace boxify.Controllers
                 return NotFound();
             }
            
-
-
             return View(new EditViewModel()
             {
                 Id = id,
@@ -91,8 +89,6 @@ namespace boxify.Controllers
             }
             else
             {
-                
-
                 ad.Name = model.Name;
                 ad.ImgUrl = model.ImgUrl;
                 ad.Price = model.Price;
@@ -104,7 +100,6 @@ namespace boxify.Controllers
                 repo.SaveChanges();
             }
 
-
             return Redirect($"/Ad/Details/{model.Id}");
         }
             public IActionResult Details(string id)
@@ -114,7 +109,6 @@ namespace boxify.Controllers
             {
                 return NotFound();
             }
-
             var user = userManager.GetUserAsync(User).Result;
             var favorite = repo.All<Favourite>().FirstOrDefault(x => x.AdId == ad.Id);
 
@@ -126,9 +120,7 @@ namespace boxify.Controllers
                 {
                     ad.isFavorite = true;
                 }
-
             }
-
 
             return View(ad);
         }
