@@ -54,7 +54,60 @@ namespace boxify.Controllers
 
             return Redirect("/");
         }
-        public IActionResult Details(string id)
+
+        public IActionResult Edit(string id, EditViewModel model)
+        {
+            var ad = repo.GetById<Ad>(id);
+            var user = userManager.GetUserAsync(User).Result;
+            var category = repo.All<Category>().FirstOrDefault(x => x.Id == ad.CategoryId);
+
+            if (ad.UserId != user.Id || category is null)
+            {
+                return NotFound();
+            }
+           
+
+
+            return View(new EditViewModel()
+            {
+                Id = id,
+                Name = ad.Name,
+                Category = category.Name,
+                ImgUrl = ad.ImgUrl,
+                Price = ad.Price,
+                PhoneNumber = ad.PhoneNumber,
+                City = ad.City,
+                Description = ad.Description,
+            });
+        }
+        [HttpPost]
+        public IActionResult Edit(EditViewModel model)
+        {
+            var ad = repo.GetById<Ad>(model.Id);
+            var category = repo.All<Category>().FirstOrDefault(x => x.Name == model.Category);
+            if (ad is null || category is null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                
+
+                ad.Name = model.Name;
+                ad.ImgUrl = model.ImgUrl;
+                ad.Price = model.Price;
+                ad.PhoneNumber = model.PhoneNumber;
+                ad.City = model.City;
+                ad.Description = model.Description;
+                ad.Category = category;
+
+                repo.SaveChanges();
+            }
+
+
+            return Redirect($"/Ad/Details/{model.Id}");
+        }
+            public IActionResult Details(string id)
         {
             var ad = repo.GetById<Ad>(id);
             if (ad == null)

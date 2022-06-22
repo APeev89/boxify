@@ -72,7 +72,7 @@ namespace boxify.Controllers
             });
         }
 
-
+        [Authorize]
         public IActionResult RemoveFromFavorites(string id)
         {
             var ad = repo.GetById<Ad>(id);

@@ -1,5 +1,8 @@
-﻿@using boxify.Data.ModelsDb
+﻿@using Microsoft.AspNetCore.Identity;
+@using boxify.Data.ModelsDb
+@inject UserManager<IdentityUser> userManager
 @model Ad
+
 
 <h2>@Model.Name</h2>
 
@@ -9,7 +12,8 @@
         <h3 class="pull-right">@Model.Price.ToString("c")</h3>
         <h5>Contact us:</h5>
         <li>Phone: @Model.PhoneNumber</li>
-        <li>Email: @Model.Name</li>
+        <li>City : @Model.City</li>
+        <li>Email: @Model.User.Email</li>
         </ul>
         <ul>
             <li>Info: @Model.Description</li>
@@ -17,13 +21,21 @@
         </ul>
         @if (@Model.isFavorite == false)
         {
-            <div class="addToFavorites">
+            <span class="addToFavorites">
                 <p class="button" >
                     <a class="btn btn-primary" asp-controller="Favorites" asp-action="AddToFavorites"
                    asp-route-id="@Model.Id">Add to favorites</a>
                 </p>
-            </div>
+            </span>
         }
-
+       @if ( @Model.UserId == userManager.GetUserId(User))
+       {
+           <span class="EditBtn">
+                <p class="button" >
+                    <a class="btn btn-edit" asp-controller="Ad" asp-action="Edit"
+                   asp-route-id="@Model.Id">Edit</a>
+                </p>
+            </span>
+       }
     </div>
 </div>

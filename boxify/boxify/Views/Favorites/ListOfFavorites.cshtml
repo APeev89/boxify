@@ -8,6 +8,7 @@
 }
 else
 {
+    <div class="container-fluid">
     @foreach (var ad in Model.FavouriteList.Select(x=> x.Ad))
     {
         <partial name="_AdCard" model="ad" />
@@ -17,4 +18,5 @@ else
             </p>
         </div>
     }
+    </div>
 }
