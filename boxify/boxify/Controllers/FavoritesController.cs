@@ -47,10 +47,6 @@ namespace boxify.Controllers
                 repo.Add(userFavorite);
             }
             
-
-           
-
-            
             repo.SaveChanges();
             return Redirect("/Favorites/ListOfFavorites");
         }

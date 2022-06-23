@@ -1,0 +1,26 @@
+﻿@using boxify.ViewModels
+@model MyAdsViewModel
+
+<h2 class="text-center">My Account</h2>
+@if (Model.MyAdsList is null)
+{
+    <h2 class="text-center">You don't have any ads!</h2>
+    <h4 class="text-center" class="inline">
+        Create new Ad -> <span class="createNewAd inline">
+            <p class="button inline">
+                <a class="btn btn-primary" asp-controller="Ad" asp-action="Add">Create</a>
+            </p>
+        </span>
+    </h4>
+}else
+{
+     @foreach (var ad in Model.MyAdsList)
+    {
+        <partial name="_AdCard" model="ad" />
+        <div class="DeleteFromMyAccount">
+            <p class="button">
+                <a class="btn btn-primary" asp-controller="MyAds" asp-action="Delete" asp-route-id="@ad.Id" style="background-color:red; border-block-color:red">Delete</a>
+            </p>
+        </div>
+    }
+}
