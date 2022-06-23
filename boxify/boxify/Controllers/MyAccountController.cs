@@ -35,5 +35,28 @@ namespace boxify.Controllers
                 MyAdsList = myAdsList,
             });
         }
+
+        public IActionResult Delete(string id)
+        {
+            var ad = repo.GetById<Ad>(id);
+            var favourites = repo.All<Favourite>().Where(x => x.AdId == id);
+
+            if (favourites.Count() != 0)
+            {
+                UserFavorite uf;
+                foreach (var favourite in favourites)
+                {
+                    uf = repo.All<UserFavorite>().FirstOrDefault(x => x.FavoriteId == favourite.Id);
+                    repo.Delete(uf);
+                    repo.Delete(favourite);
+                }
+            }
+          
+
+            repo.Delete(ad);
+            repo.SaveChanges();
+
+            return Redirect("/");   
+        }
     }
 }

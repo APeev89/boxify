@@ -1,7 +1,7 @@
 ﻿@using boxify.ViewModels
 @model FavoritesViewModel
 
-<h2 class="text-center">Your favorite ads</h2>
+<h2 class="text-center"><u>Your favorite ads</u></h2>
 @if (Model.FavouriteList is null)
 {
     <h4 class="text-center">You don't have any favorites ads!</h4>
@@ -14,7 +14,7 @@ else
         <partial name="_AdCard" model="ad" />
         <div class="RemoveFromFavorites">
             <p class="button">
-                <a class="btn btn-primary" asp-controller="Favorites" asp-action="RemoveFromFavorites" asp-route-id="@ad.Id" style="background-color:red; border-block-color:red">Remove</a>
+                <a class="btn btn-primary" asp-controller="Favorites" asp-action="RemoveFromFavorites" asp-route-id="@ad.Id" style="background-color:orangered; border-block-color:orangered">Remove</a>
             </p>
         </div>
     }
